@@ -1,1 +1,26 @@
-<p>checkout works!</p>
+<style>
+
+.number-add:hover {
+  cursor: pointer;
+
+}
+
+</style>
+
+<div id="app">
+    <div class="main-page"></div>
+    <button type="submit" class="clear-cart-btn float-right" @click="clearCart()">Wyczyść koszyk</button> <br> <br>
+    <table class="table table=striped" > 
+      <h2> Dania: </h2>
+      <tbody >
+        <tr *ngFor="dish in dishList" v-bind:key="dish.id">
+          <td>{{dish.name}}</td>
+          <td>
+            <img class="number-add" (click)="numberChange(dish.id, 'minus')" src="../../../assets/img/minus-icon.svg" width="10" />
+                {{dish.number}} szt.
+            <img class="number-add" (click)="numberChange(dish.id, 'plus')" src="../../../assets/img/plus-icon.svg" width="10" />
+          </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>

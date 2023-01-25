@@ -19,7 +19,7 @@ export class CrudService {
   constructor(private httpClient: HttpClient) { }
  
   // Add
-  AddBook(data: Book): Observable<any> {
+  AddBook(data: Catering): Observable<any> {
     let API_URL = `${this.REST_API}/add-item`;
     return this.httpClient.post(API_URL, data)
       .pipe(
