@@ -29,41 +29,7 @@ export class CheckoutComponent {
       this.dishList =res;
       console.log(this.dishList)
     });    
-    this.dishList = 
-      [
-        {
-            "_id": "63d24bc6ca3140aae2dd798a",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.197Z",
-            "updatedAt": "2023-01-26T09:45:42.197Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc6ca3140aae2dd798c",
-            "name": "3",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.630Z",
-            "updatedAt": "2023-01-26T09:45:42.630Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd798e",
-            "name": "1",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.209Z",
-            "updatedAt": "2023-01-26T09:45:43.209Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd7990",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.749Z",
-            "updatedAt": "2023-01-26T09:45:43.749Z",
-            "__v": 0
-        }
-    ]
+
 
   }
 
@@ -89,7 +55,7 @@ export class CheckoutComponent {
 
 
   changeNumber(id:any, action:string, amount:number){
-    if (action === 'minus') {
+    if (action === 'minus' && amount>0) {
       this.crudService.updateBook(id,action,amount).subscribe(res => {
         console.log(res)
         this.crudService.GetBooks().subscribe(res => {
@@ -98,40 +64,6 @@ export class CheckoutComponent {
           console.log(this.dishList)
         });    
       })
-      this.dishList =       [
-        {
-            "_id": "63d24bc6ca3140aae2dd798a",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.197Z",
-            "updatedAt": "2023-01-26T09:45:42.197Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc6ca3140aae2dd798c",
-            "name": "3",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.630Z",
-            "updatedAt": "2023-01-26T09:45:42.630Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd798e",
-            "name": "1",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.209Z",
-            "updatedAt": "2023-01-26T09:45:43.209Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd7990",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.749Z",
-            "updatedAt": "2023-01-26T09:45:43.749Z",
-            "__v": 0
-        }
-    ]
     }
     if (action === 'plus') {
       this.crudService.updateBook(id,action,amount).subscribe(res => {
@@ -142,40 +74,6 @@ export class CheckoutComponent {
           console.log(this.dishList)
         });    
       })
-      this.dishList = [
-        {
-            "_id": "63d24bc6ca3140aae2dd798a",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.197Z",
-            "updatedAt": "2023-01-26T09:45:42.197Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc6ca3140aae2dd798c",
-            "name": "3",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:42.630Z",
-            "updatedAt": "2023-01-26T09:45:42.630Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd798e",
-            "name": "1",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.209Z",
-            "updatedAt": "2023-01-26T09:45:43.209Z",
-            "__v": 0
-        },
-        {
-            "_id": "63d24bc7ca3140aae2dd7990",
-            "name": "2",
-            "amount": 1,
-            "createdAt": "2023-01-26T09:45:43.749Z",
-            "updatedAt": "2023-01-26T09:45:43.749Z",
-            "__v": 0
-        }
-    ]
     }
   }
   
@@ -190,39 +88,5 @@ export class CheckoutComponent {
         });    
       }
     )
-    this.dishList =   [
-      {
-          "_id": "63d24bc6ca3140aae2dd798a",
-          "name": "2",
-          "amount": 1,
-          "createdAt": "2023-01-26T09:45:42.197Z",
-          "updatedAt": "2023-01-26T09:45:42.197Z",
-          "__v": 0
-      },
-      {
-          "_id": "63d24bc6ca3140aae2dd798c",
-          "name": "3",
-          "amount": 1,
-          "createdAt": "2023-01-26T09:45:42.630Z",
-          "updatedAt": "2023-01-26T09:45:42.630Z",
-          "__v": 0
-      },
-      {
-          "_id": "63d24bc7ca3140aae2dd798e",
-          "name": "1",
-          "amount": 1,
-          "createdAt": "2023-01-26T09:45:43.209Z",
-          "updatedAt": "2023-01-26T09:45:43.209Z",
-          "__v": 0
-      },
-      {
-          "_id": "63d24bc7ca3140aae2dd7990",
-          "name": "2",
-          "amount": 1,
-          "createdAt": "2023-01-26T09:45:43.749Z",
-          "updatedAt": "2023-01-26T09:45:43.749Z",
-          "__v": 0
-      }
-  ]
   }
 }
