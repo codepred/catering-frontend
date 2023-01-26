@@ -67,6 +67,26 @@ export class CheckoutComponent {
 
   }
 
+  // indeksujemy po id czyli od 1-6, dlatego dishNames[0] to blank
+  dishNames = [
+    "blank",
+    "Przystawki mix",
+    "Makaron wege",
+    "Indyk pieczony",
+    "Deser mix",
+    "Pizza",
+    "Catering mix"
+  ]
+  dishPrices = [
+    0,
+    39,
+    29,
+    69,
+    39,
+    39,
+    89
+  ]
+
 
   changeNumber(id:any, action:string, amount:number){
     if (action === 'minus') {

@@ -1,25 +1,69 @@
 <style>
 
+
 .number-add:hover {
   cursor: pointer;
 
 }
 
+.check-out-main {
+  min-width: 300px;
+}
+
+.clear-cart{
+    font-size: 15px;
+    float: right;
+    color: black;
+    margin-right: 30%;
+  }
+  .clear-cart:hover {
+    text-decoration: underline;
+    cursor: pointer;
+
+  }
+.table {
+    margin: auto;
+    width: 24%;
+}
+
+.title-text-catering {
+    font-size: 25px;
+    padding-bottom: 3%;
+    text-align: center;
+  }
+  tr {
+    text-align: center;
+  }
+
 </style>
 
-<div id="app">
-    <div class="main-page"></div>
-    <button type="submit" class="clear-cart-btn float-right" (click)="clearCart()">Wyczyść koszyk</button> <br> <br>
-    <table class="table table=striped" > 
-      <h2> Dania: </h2>
+<div class="main-container">
+    <div class="action-panel">
+        <div class="title-text-catering"> Koszyk: </div>
+        <div class="clear-cart" (click)="clearCart()">Wyczyść koszyk</div>  <br> <br>
+    </div>
+    <table class="table" > 
+        <thead>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Ilość
+            </th>
+            <th>
+                Cena
+            </th>
+        </thead>
       <tbody >
         <tr *ngFor="let dish of dishList">
-          <td>{{dish._id}}</td>
-          <td>{{dish.name}}</td>
+          <td>{{dishNames[dish.name]}}</td>
           <td>
             <img class="number-add" (click)="changeNumber(dish._id, 'minus', dish.amount)" src="../../../assets/img/minus-icon.svg" width="10" />
                 {{dish.amount}} szt.
             <img class="number-add" (click)="changeNumber(dish._id, 'plus', dish.amount)" src="../../../assets/img/plus-icon.svg" width="10" />
+          </td>
+          <td>
+            {{ dish.amount * dishPrices[dish.name] }} zł
           </td>
           </tr>
       </tbody>
