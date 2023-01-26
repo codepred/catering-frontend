@@ -9,16 +9,17 @@
 
 <div id="app">
     <div class="main-page"></div>
-    <button type="submit" class="clear-cart-btn float-right" @click="clearCart()">Wyczyść koszyk</button> <br> <br>
+    <button type="submit" class="clear-cart-btn float-right" (click)="clearCart()">Wyczyść koszyk</button> <br> <br>
     <table class="table table=striped" > 
       <h2> Dania: </h2>
       <tbody >
-        <tr *ngFor="dish in dishList" v-bind:key="dish.id">
+        <tr *ngFor="let dish of dishList">
+          <td>{{dish._id}}</td>
           <td>{{dish.name}}</td>
           <td>
-            <img class="number-add" (click)="numberChange(dish.id, 'minus')" src="../../../assets/img/minus-icon.svg" width="10" />
-                {{dish.number}} szt.
-            <img class="number-add" (click)="numberChange(dish.id, 'plus')" src="../../../assets/img/plus-icon.svg" width="10" />
+            <img class="number-add" (click)="changeNumber(dish._id, 'minus', dish.amount)" src="../../../assets/img/minus-icon.svg" width="10" />
+                {{dish.amount}} szt.
+            <img class="number-add" (click)="changeNumber(dish._id, 'plus', dish.amount)" src="../../../assets/img/plus-icon.svg" width="10" />
           </td>
           </tr>
       </tbody>

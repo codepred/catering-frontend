@@ -20,12 +20,14 @@ export class CateringComponent {
     private crudService: CrudService
   ) { 
     this.bookForm = this.formBuilder.group({
-      id: [itemId],
+      name: [''],
+      price: [''],
+      description: ['']
     })
   }
 
   addItemToBasket (itemId: string) {
-      /*
+      this.bookForm.value.name = itemId;
       this.crudService.AddBook(this.bookForm.value)
       .subscribe(() => {
           console.log('Data added successfully!')
@@ -33,6 +35,5 @@ export class CateringComponent {
         }, (err) => {
           console.log(err);
       });
-      */
     }
 }

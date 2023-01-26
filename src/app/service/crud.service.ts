@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class CrudService {
  
   // Node/Express API
-  REST_API: string = 'http://localhost:8000/api';
+  REST_API: string = 'http://localhost:3000/api';
  
   // Http Header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -20,7 +20,16 @@ export class CrudService {
  
   // Add
   AddBook(data: Catering): Observable<any> {
-    let API_URL = `${this.REST_API}/add-item`;
+    let API_URL = `${this.REST_API}/employee/store`;
+    return this.httpClient.post(API_URL, data)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  DeleteAll(): Observable<any> {
+    let API_URL = `${this.REST_API}/employee/deleteAll`;
+    let data = null;
     return this.httpClient.post(API_URL, data)
       .pipe(
         catchError(this.handleError)
@@ -29,7 +38,7 @@ export class CrudService {
  
   // Get all objects
   GetBooks() {
-    return this.httpClient.get(`${this.REST_API}`);
+    return this.httpClient.get(`${this.REST_API}/employee`);
   }
  
   // Get single object
@@ -44,9 +53,10 @@ export class CrudService {
   }
  
   // Update
-  updateBook(id:any, data:any): Observable<any> {
-    let API_URL = `${this.REST_API}/update-book/${id}`;
-    return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
+  updateBook(_id:any, action:any, amount:number): Observable<any> {
+    const data = {id : _id, amount: amount, action:action }
+    let API_URL = `${this.REST_API}/employee/update`;
+    return this.httpClient.post(API_URL, data, { headers: this.httpHeaders })
       .pipe(
         catchError(this.handleError)
       )

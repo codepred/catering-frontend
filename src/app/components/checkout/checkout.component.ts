@@ -2,40 +2,70 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { CommonModule } from '@angular/common'
+
 
 @Component({
+  standalone: true,
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.less']
+  styleUrls: ['./checkout.component.less'],
+  imports : [CommonModule]
 })
-export class CheckoutComponent {
-  /*
-  const dishList: any[] = [];
 
-  dishList.push({"id": 1, "name": "Przystawki mix", "number": "1"})
-  dishList.push({"id": 2, "name": "Makaron wege", "number": "1"})
-  dishList.push({"id": 3, "name": "Indyk pieczony", "number": "1"})
-  dishList.push({"id": 4, "name": "Deser mix", "number": "1"})
-  dishList.push({"id": 5, "name": "Pizza", "number": "1"})
-  dishList.push({"id": 6, "name": "Catering mix", "number": "1"})
+export class CheckoutComponent {
+
+  dishList: any = [];
+
+
+  constructor(private crudService: CrudService) { }
 
   
   ngOnInit(): void {
     // load data
+    this.crudService.GetBooks().subscribe(res => {
+      console.log(res)
+      this.dishList =res;
+      console.log(this.dishList)
+    });    
+
+
   }
 
 
-  changeNumber({itemId, action }: { itemId: any; action: any }){
+  changeNumber(id:any, action:string, amount:number){
     if (action === 'minus') {
-      //pass
+      this.crudService.updateBook(id,action,amount).subscribe(res => {
+        console.log(res)
+        this.crudService.GetBooks().subscribe(res => {
+          console.log(res)
+          this.dishList =res;
+          console.log(this.dishList)
+        });    
+      })
     }
     if (action === 'plus') {
-      //pass
+      this.crudService.updateBook(id,action,amount).subscribe(res => {
+        console.log(res)
+        this.crudService.GetBooks().subscribe(res => {
+          console.log(res)
+          this.dishList =res;
+          console.log(this.dishList)
+        });    
+      })
     }
   }
   
   clearCart() {
-    
+    this.crudService.DeleteAll().subscribe(
+      res => {
+        console.log('all deleted')
+        this.crudService.GetBooks().subscribe(res => {
+          console.log(res)
+          this.dishList =res;
+          console.log(this.dishList)
+        });    
+      }
+    )
   }
-  */
 }
